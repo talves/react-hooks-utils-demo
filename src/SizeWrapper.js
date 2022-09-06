@@ -1,6 +1,6 @@
 import React from "react";
-import useComponentSize from "@talves/use-component-size";
-import usePrevious from "@talves/use-previous";
+import { useComponentSize } from "@talves/use-component-size";
+import { usePrevious } from "@talves/use-previous";
 
 function sizeEqual(a, b) {
   return JSON.stringify(a) === JSON.stringify(b);
@@ -12,7 +12,7 @@ const SizeWrapper = ({ children, onSizeChange, ...props }) => {
   const previousSize = usePrevious(componentSize);
 
   const handleSizeChange = React.useCallback(
-    size => {
+    (size) => {
       if (typeof onSizeChange === "function") {
         onSizeChange(size);
       }
@@ -24,7 +24,7 @@ const SizeWrapper = ({ children, onSizeChange, ...props }) => {
     if (notEqual) {
       handleSizeChange({
         current: componentSize,
-        previous: previousSize
+        previous: previousSize,
       });
     }
   }, [componentSize, previousSize, handleSizeChange]);

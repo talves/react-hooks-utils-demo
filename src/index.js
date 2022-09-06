@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import useWindowSize from '@talves/use-window-size';
-import usePrevious from '@talves/use-previous'
+import { createRoot } from 'react-dom/client';
+import {useWindowSize} from '@talves/use-window-size';
+import {usePrevious} from '@talves/use-previous'
 
 import './styles.css';
 
@@ -43,7 +43,8 @@ function App() {
 }
 
 const rootElement = document.getElementById('root');
-ReactDOM.render(<App />, rootElement);
+const root = createRoot(rootElement); // createRoot(container!) if you use TypeScript
+root.render(<App />);
 
 
 const wrapperStyle = {
